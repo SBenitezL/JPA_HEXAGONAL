@@ -14,16 +14,16 @@ import lombok.Setter;
 @Table(name="Direcciones")
 @Getter
 @Setter
-public class Direccion {
+public class DireccionEntity {
 
 	@Id
 	@Column(name = "idPersona")
-	private Integer idPersona;
+	private int idPersona;
     
 	@OneToOne
 	@MapsId
 	@JoinColumn(name = "idPersona")
-	private Docente objDocente;
+	private DocenteEntity objDocente;
 
     @Column(nullable = false)
 	private String direccionResidencia;
@@ -32,11 +32,11 @@ public class Direccion {
     @Column(nullable = false)
 	private String pais;	
     
-	public Direccion(){
+	public DireccionEntity(){
 
 	}
 
-    public Direccion(String direccionResidencia, String ciudad, String pais) {
+    public DireccionEntity(String direccionResidencia, String ciudad, String pais) {
 		this.direccionResidencia = direccionResidencia;
 		this.ciudad = ciudad;
 		this.pais = pais;

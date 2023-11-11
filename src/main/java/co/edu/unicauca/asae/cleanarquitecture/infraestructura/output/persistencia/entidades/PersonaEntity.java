@@ -17,7 +17,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class Persona{
+public abstract class PersonaEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPersona;
@@ -29,7 +29,7 @@ public abstract class Persona{
     @Column(nullable = false)
     private String apellidos;
 
-    public Persona(String tipoIdentificacion,String  numeroIdentificacion, String nombres, String apellidos)
+    public PersonaEntity(String tipoIdentificacion,String  numeroIdentificacion, String nombres, String apellidos)
     {
         this.tipoIdentificacion = tipoIdentificacion;
         this.numeroIdentificacion = numeroIdentificacion;

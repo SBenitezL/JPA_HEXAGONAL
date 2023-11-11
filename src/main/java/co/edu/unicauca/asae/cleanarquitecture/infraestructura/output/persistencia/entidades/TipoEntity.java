@@ -21,28 +21,28 @@ import java.util.ArrayList;
 @Getter
 @Setter
 
-public class Tipo {
+public class TipoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idTipo")
-    private Integer idTipo;
+    private int idTipo;
 
     @Column(name = "nombre",nullable = false, length = 45)
     private String nombre;
 
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "objTipo")
-    List<Publicacion> publicaciones;
+    List<PublicacionEntity> publicaciones;
 
-    public Tipo(){
+    public TipoEntity(){
         
     }
 
-    public Tipo(String nombre ){
+    public TipoEntity(String nombre ){
         this.nombre = nombre;
         this.publicaciones = new ArrayList<>();
     }
 
-    public void agregarPublicacion(Publicacion publicacion){
+    public void agregarPublicacion(PublicacionEntity publicacion){
         this.publicaciones.add(publicacion);
     }
 

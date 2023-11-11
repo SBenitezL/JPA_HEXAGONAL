@@ -1,11 +1,17 @@
 package co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -14,7 +20,7 @@ import lombok.Data;
 @Entity(name = "Publicaciones")
 @Data
 @AllArgsConstructor
-public class Publicacion {
+public class PublicacionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idPublicacion")
@@ -22,7 +28,7 @@ public class Publicacion {
 
     @ManyToOne
     @JoinColumn(name = "idTipo", nullable = false)
-    private Tipo objTipo;
+    private TipoEntity objTipo;
 
     @Column(name = "titulo", nullable = false)
     private String titulo;
@@ -30,11 +36,17 @@ public class Publicacion {
     @Column(name = "area", nullable = false)
     private String area;
 
-    public Publicacion(){
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="Docentes_Publicaciones",
+        joinColumns = @JoinColumn(name = "idPersona"),
+        inverseJoinColumns = @JoinColumn(name = "idPublicacion"))
+    private List<DocenteEntity> docentes;
+
+    public PublicacionEntity(){
 
     }
 
-    public Publicacion(String titulo,String area){
+    public PublicacionEntity(String titulo,String area){
         this.titulo = titulo;
         this.area = area;
     }

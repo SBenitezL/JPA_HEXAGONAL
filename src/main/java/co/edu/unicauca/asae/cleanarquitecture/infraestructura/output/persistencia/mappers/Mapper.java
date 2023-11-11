@@ -5,9 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ProductoMapper {
+public class Mapper {
     @Bean
-    public ModelMapper crearProductoMapper() {
+    public ModelMapper crearMapper() {
         return new ModelMapper();
     }
 }
