@@ -1,6 +1,5 @@
 package co.edu.unicauca.asae.cleanarquitecture.dominio.casosDeUso;
 
-import java.util.List;
 
 import co.edu.unicauca.asae.cleanarquitecture.aplicacion.input.GestionarDocenteCUIntPort;
 import co.edu.unicauca.asae.cleanarquitecture.aplicacion.output.GestionarDocenteGatewayIntPort;
@@ -17,15 +16,7 @@ public class GestionarDocenteCUAdapter implements GestionarDocenteCUIntPort{
     
     @Override
     public Docente crearDocente(Docente docente) {
-        if(this.gatewayDocente.existeDocentePorId(docente.getIdPersona())){
-            return null;
-        }
         return this.gatewayDocente.crearDocente(docente);
-    }
-
-    @Override
-    public List<Docente> listarDocenteConPublicaciones() {
-        return this.gatewayDocente.listarDocenteConPublicacion();
     }
 
     @Override

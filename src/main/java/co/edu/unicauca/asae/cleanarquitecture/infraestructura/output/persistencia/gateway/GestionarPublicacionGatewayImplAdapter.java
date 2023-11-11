@@ -1,6 +1,9 @@
 package co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.gateway;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.asae.cleanarquitecture.aplicacion.output.GestionarPublicacionGatewayIntPort;
@@ -38,5 +41,18 @@ public class GestionarPublicacionGatewayImplAdapter implements GestionarPublicac
         PublicacionEntity publicacionConsultada = this.repositorioPublicacion.findByTitulo(titulo);
         Publicacion publicacionRespuesta = this.mapperPublicacion.map(publicacionConsultada, Publicacion.class);
         return publicacionRespuesta;
+    }
+
+    @Override
+    public int existePublicacionPorTitulo(String titulo) {
+        return this.repositorioPublicacion.existePublicacionPorTitulo(titulo);
+    }
+
+    @Override
+    public List<Publicacion> consultarPublicacionesEager() {
+        Iterable<PublicacionEntity> iterablePublicacion = this.repositorioPublicacion.findAll();
+        List<Publicacion> listaObtenida = this.mapperPublicacion.map(iterablePublicacion, new TypeToken<List<Publicacion>>() {
+        }.getType());
+        return listaObtenida;
     }  
 }

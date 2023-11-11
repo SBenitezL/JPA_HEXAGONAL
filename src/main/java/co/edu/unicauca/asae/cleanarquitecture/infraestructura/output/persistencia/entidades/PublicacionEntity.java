@@ -38,12 +38,12 @@ public class PublicacionEntity {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="Docentes_Publicaciones",
-        joinColumns = @JoinColumn(name = "idPersona"),
-        inverseJoinColumns = @JoinColumn(name = "idPublicacion"))
+        joinColumns = @JoinColumn(name = "idPublicacion"),
+        inverseJoinColumns = @JoinColumn(name = "idPersona"))
     private List<DocenteEntity> docentes;
 
     public PublicacionEntity(){
-
+        this.docentes = new ArrayList<>();
     }
 
     public PublicacionEntity(String titulo,String area){

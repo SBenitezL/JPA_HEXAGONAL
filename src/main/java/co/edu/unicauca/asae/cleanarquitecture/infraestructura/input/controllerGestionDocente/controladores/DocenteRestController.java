@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.asae.cleanarquitecture.aplicacion.input.GestionarDocenteCUIntPort;
@@ -28,6 +29,7 @@ public class DocenteRestController {
     @PostMapping("/docentes")
     public ResponseEntity<DocenteDTORespuesta> create(@RequestBody DocenteDTOPeticion docentePeticion){
         Docente docenteCrear = mapperPeticionDocente.mappearPeticionADocente(docentePeticion);
+        //Docente docenteCrear = this.mapperDocente.mappearDePeticionADocente(docentePeticion);
         Docente docenteCreado = this.gestionarDocenteCU.crearDocente(docenteCrear);
         ResponseEntity<DocenteDTORespuesta> docenteRespuesta = new ResponseEntity<DocenteDTORespuesta>(
             mapperDocente.mappearDeDocenteARespuesta(docenteCreado),
@@ -35,9 +37,8 @@ public class DocenteRestController {
         return docenteRespuesta;
     }
 
-    @GetMapping("/docentes/{correo}")
-    public ResponseEntity<DocenteDTORespuesta> findByCorreo(@PathVariable String correo){
-        System.out.println(correo);
+    @GetMapping("/docentes")
+    public ResponseEntity<DocenteDTORespuesta> findByCorreo(@RequestParam String correo){
         Docente docenteConCorreo = this.gestionarDocenteCU.consultarDocentePorCorreo(correo);
         ResponseEntity<DocenteDTORespuesta> docenteRespuesta = new ResponseEntity<DocenteDTORespuesta>(
             mapperDocente.mappearDeDocenteARespuesta(docenteConCorreo),

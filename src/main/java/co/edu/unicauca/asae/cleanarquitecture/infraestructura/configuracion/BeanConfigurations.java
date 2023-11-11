@@ -32,8 +32,9 @@ public class BeanConfigurations {
 
     @Bean
     public GestionarPublicacionCUAdapter crearGestionarPublicacionCUInt(
-        GestionarPublicacionGatewayIntPort gatewayPublicacion){
-        GestionarPublicacionCUAdapter gestionarPublicacionCU = new GestionarPublicacionCUAdapter(gatewayPublicacion);
+        GestionarPublicacionGatewayIntPort gatewayPublicacion,
+        GestionarDocenteGatewayIntPort gatewayDocente){
+        GestionarPublicacionCUAdapter gestionarPublicacionCU = new GestionarPublicacionCUAdapter(gatewayPublicacion,gatewayDocente);
         return gestionarPublicacionCU;
     }
 }

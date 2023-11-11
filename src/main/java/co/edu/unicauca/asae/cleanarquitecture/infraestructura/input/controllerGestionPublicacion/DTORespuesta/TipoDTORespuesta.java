@@ -1,5 +1,6 @@
 package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionPublicacion.DTORespuesta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -13,6 +14,6 @@ public class TipoDTORespuesta {
     List<PublicacionDTORespuesta> publicaciones; 
 
     public TipoDTORespuesta(){
-        
+        this.publicaciones = new ArrayList<>();
     }
 }

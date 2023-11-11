@@ -12,6 +12,6 @@ public class PublicacionDTOPeticion {
     private String area;
 
     public PublicacionDTOPeticion(){
-        
+
     }
 }

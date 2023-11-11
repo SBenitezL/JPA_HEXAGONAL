@@ -1,6 +1,4 @@
 package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionDocente.DTORespuesta;
-import java.util.ArrayList;
-import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +12,10 @@ public class DocenteDTORespuesta extends PersonaDTORespuesta {
     //private List<PublicacionDTORespuesta> publicaciones;
     private DireccionDTORespuesta objDireccion;
 
+    public DocenteDTORespuesta(){
+
+    }
+    
     public DocenteDTORespuesta(int idPersona,String tipoIdentificacion,String numeroIdentificacion,
                 String nombres,String apellidos,String correo,String vinculacion,String departamento,
                 DireccionDTORespuesta objDireccion){

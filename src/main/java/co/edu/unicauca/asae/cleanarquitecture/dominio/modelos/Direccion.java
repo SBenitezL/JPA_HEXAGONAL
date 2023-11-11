@@ -1,7 +1,5 @@
 package co.edu.unicauca.asae.cleanarquitecture.dominio.modelos;
 
-import javax.print.DocFlavor.STRING;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

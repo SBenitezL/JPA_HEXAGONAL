@@ -1,5 +1,6 @@
 package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionPublicacion.DTOPeticion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -13,6 +14,6 @@ public class TipoDTOPeticion {
     List<PublicacionDTOPeticion> publicaciones;
 
     public TipoDTOPeticion(){
-        
+        this.publicaciones = new ArrayList<>();
     }
 }

@@ -1,9 +1,7 @@
 package co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.gateway;
 
-import java.util.List;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.asae.cleanarquitecture.aplicacion.output.GestionarDocenteGatewayIntPort;
@@ -36,19 +34,24 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
         return docenteRespuesta;
     }
 
-    @Override
+    /*@Override
     public List<Docente> listarDocenteConPublicacion() {
         Iterable<DocenteEntity> listaDocente = this.repositorioDocente.findAll();
         List<Docente> listaObtenida = this.mapperDocente.map(listaDocente, new TypeToken<List<Docente>>() {
         }.getType());
         return listaObtenida;
-    }
+    }*/
 
     @Override
     public Docente consultarDocentePorCorreo(String correo) {
         DocenteEntity docenteConsultado = this.repositorioDocente.findByCorreo(correo);
         Docente docenteRespuesta = this.mapperDocente.map(docenteConsultado, Docente.class);
         return docenteRespuesta;
+    }
+
+    @Override
+    public int existeDocenteConCorreo(String correo) {
+       return this.repositorioDocente.existeDocentePorCorreo(correo);
     }
     
     

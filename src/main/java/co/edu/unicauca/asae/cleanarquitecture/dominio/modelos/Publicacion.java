@@ -1,5 +1,6 @@
 package co.edu.unicauca.asae.cleanarquitecture.dominio.modelos;
 
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +16,6 @@ public class Publicacion {
     private List<Docente> docentes;
 
     public Publicacion(){
-
+        this.docentes = new ArrayList<>();
     }
 }

@@ -1,14 +1,10 @@
 package co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -30,19 +26,12 @@ public class DocenteEntity extends PersonaEntity{
 
     @Column(name = "departamento", nullable = false)
     private String departamento;
-
-    /*@ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="Docentes_Publicaciones",
-        joinColumns = @JoinColumn(name = "idPersona"),
-        inverseJoinColumns = @JoinColumn(name = "idPublicacion"))
-    private List<PublicacionEntity> publicaciones;*/
-
     
     @OneToOne(mappedBy = "objDocente",fetch=FetchType.EAGER,cascade = { CascadeType.ALL })
     private DireccionEntity objDireccion;
 
     public DocenteEntity(){
-        //this.publicaciones = new ArrayList<>();
+        
     }
 
     public DocenteEntity(int Idpersona,String tipoIdentificacion,
@@ -52,6 +41,5 @@ public class DocenteEntity extends PersonaEntity{
         this.correo = correo;
         this.vinculacion = vinculacion;
         this.departamento = departamento;
-        //this.publicaciones = new ArrayList<PublicacionEntity>();
     }
 }

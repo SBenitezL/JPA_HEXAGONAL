@@ -1,6 +1,4 @@
 package co.edu.unicauca.asae.cleanarquitecture.dominio.modelos;
-import java.util.ArrayList;
-import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
