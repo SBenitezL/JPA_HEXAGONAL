@@ -8,7 +8,7 @@ import lombok.Data;
 public class DireccionDTORespuesta {
 
     private int idPersona;
-    //private DocenteDTORespuesta objDocente;
+    private DocenteDTORespuesta objDocente;
     private String direccionResidencia;
     private String ciudad;
     private String pais;

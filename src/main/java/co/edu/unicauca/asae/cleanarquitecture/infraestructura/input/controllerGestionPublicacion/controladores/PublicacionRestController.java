@@ -2,6 +2,7 @@ package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerG
 
 import java.util.List;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,10 +41,18 @@ public class PublicacionRestController {
         return publicacionRespuesta;
     }
 
+    @GetMapping("/publicaciones")
+    public ResponseEntity<PublicacionDTORespuesta> consultarPorTitulo(@RequestParam String titulo){
+        Publicacion publicacionConsultada = this.gestionarPublicacionCU.consultarPublicacionPorTitulo(titulo);
+        ResponseEntity<PublicacionDTORespuesta> publicacionRespuesta = new ResponseEntity<PublicacionDTORespuesta>(
+            mapperPublicacion.mappearDePublicacionARespuesta(publicacionConsultada),
+            HttpStatus.OK
+        );
+        return publicacionRespuesta;
+    }
+
     @PatchMapping("/publicaciones")
     public ResponseEntity<PublicacionDTORespuesta> asignar(@RequestParam String correo,@RequestParam String titulo){
-        System.out.println(correo);
-        System.out.println(titulo);
         Publicacion publicacionConsultada = this.gestionarPublicacionCU.asignarPublicacionDocente(correo, titulo);
         ResponseEntity<PublicacionDTORespuesta> publicacionRespuesta = new ResponseEntity<PublicacionDTORespuesta>(
             mapperPublicacion.mappearDePublicacionARespuesta(publicacionConsultada),
@@ -52,14 +61,21 @@ public class PublicacionRestController {
         return publicacionRespuesta;
     }
 
-    @GetMapping("/publicaciones")
-    public List<PublicacionDTORespuesta> listar(){
-        /*ResponseEntity<List<PublicacionDTORespuesta>> objRespuesta = new ResponseEntity<List<PublicacionDTORespuesta>>(
-            mapperPublicacion.mappearDePublicacionesARespuesta(this.gestionarPublicacionCU.listarPropuestasEager()),
+    @GetMapping("/publicacionesEager")
+    public ResponseEntity<List<PublicacionDTORespuesta>> listarEager(){
+        List<Publicacion> publicaciones = this.gestionarPublicacionCU.listarPropuestas();
+        ResponseEntity<List<PublicacionDTORespuesta>> objRespuesta = new ResponseEntity<List<PublicacionDTORespuesta>>(
+            mapperPublicacion.mappearDePublicacionesARespuesta(publicaciones),
             HttpStatus.OK);
-        return objRespuesta;*/
-        List<Publicacion> p = this.gestionarPublicacionCU.listarPropuestasEager();
+        return objRespuesta;
+    }
 
-        return this.mapperPeticionAPublicacion.mapperPublicacionesARespuesta(p);
+    @GetMapping("/publicacionesLazy")
+    public ResponseEntity<List<PublicacionDTORespuesta>> listarLazy(){
+        List<Publicacion> publicaciones = this.gestionarPublicacionCU.listarPropuestas();
+        ResponseEntity<List<PublicacionDTORespuesta>> objRespuesta = new ResponseEntity<List<PublicacionDTORespuesta>>(
+            mapperPublicacion.mappearDePublicacionesARespuesta(publicaciones),
+            HttpStatus.OK);
+        return objRespuesta;
     }
 }

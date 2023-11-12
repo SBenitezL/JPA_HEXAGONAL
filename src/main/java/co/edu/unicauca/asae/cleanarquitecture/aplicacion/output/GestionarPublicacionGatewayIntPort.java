@@ -9,5 +9,5 @@ public interface GestionarPublicacionGatewayIntPort {
     public Publicacion crearPublicacion(Publicacion publicacion);
     public Publicacion consultarPublicacionPorTitulo(String titulo);
     public int existePublicacionPorTitulo(String titulo);
-    public List<Publicacion> consultarPublicacionesEager();
+    public List<Publicacion> consultarPublicaciones();
 }

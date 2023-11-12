@@ -16,7 +16,10 @@ public class GestionarDocenteCUAdapter implements GestionarDocenteCUIntPort{
     
     @Override
     public Docente crearDocente(Docente docente) {
-        return this.gatewayDocente.crearDocente(docente);
+        if(this.gatewayDocente.existeDocenteConCorreo(docente.getCorreo()) == 0){
+            return this.gatewayDocente.crearDocente(docente);
+        }
+        return null;
     }
 
     @Override

@@ -9,7 +9,6 @@ public class DocenteDTOPeticion extends PersonaDTOPeticion {
     private String correo;
     private String vinculacion;
     private String departamento;
-    //private List<PublicacionDTOPeticion> publicaciones;
     private DireccionDTOPeticion objDireccion;
 
     public DocenteDTOPeticion(int idPersona,String tipoIdentificacion,String numeroIdentificacion,
@@ -20,7 +19,6 @@ public class DocenteDTOPeticion extends PersonaDTOPeticion {
         this.vinculacion = vinculacion;
         this.departamento = departamento;
         this.objDireccion = objDireccion;
-        //this.publicaciones = new ArrayList<>();
     }
 
 }

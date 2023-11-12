@@ -22,7 +22,10 @@ public class GestionarPublicacionCUAdapter implements GestionarPublicacionCUIntP
 
     @Override
     public Publicacion crearPublicacion(Publicacion publicacion) {
-        return this.gatewayPublicacion.crearPublicacion(publicacion);
+        if(this.gatewayPublicacion.existePublicacionPorTitulo(publicacion.getTitulo()) == 0){
+            return this.gatewayPublicacion.crearPublicacion(publicacion);
+        }
+        return null;
     }
 
     @Override
@@ -38,8 +41,16 @@ public class GestionarPublicacionCUAdapter implements GestionarPublicacionCUIntP
     }
 
     @Override
-    public List<Publicacion> listarPropuestasEager() {
-        return this.gatewayPublicacion.consultarPublicacionesEager();
+    public List<Publicacion> listarPropuestas() {
+        return this.gatewayPublicacion.consultarPublicaciones();
+    }
+
+    @Override
+    public Publicacion consultarPublicacionPorTitulo(String titulo) {
+        if(this.gatewayPublicacion.existePublicacionPorTitulo(titulo) != 0){
+            return this.gatewayPublicacion.consultarPublicacionPorTitulo(titulo);
+        }
+        return null;
     }
     
 }

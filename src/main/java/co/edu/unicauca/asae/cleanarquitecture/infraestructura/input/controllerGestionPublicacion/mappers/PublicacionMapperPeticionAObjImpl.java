@@ -5,14 +5,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import co.edu.unicauca.asae.cleanarquitecture.dominio.modelos.Direccion;
 import co.edu.unicauca.asae.cleanarquitecture.dominio.modelos.Docente;
 import co.edu.unicauca.asae.cleanarquitecture.dominio.modelos.Publicacion;
 import co.edu.unicauca.asae.cleanarquitecture.dominio.modelos.Tipo;
-import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionDocente.DTOPeticion.DocenteDTOPeticion;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionDocente.DTORespuesta.DireccionDTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionDocente.DTORespuesta.DocenteDTORespuesta;
-import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionDocente.mappers.DocenteMapperPeticionAObjInt;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionPublicacion.DTOPeticion.PublicacionDTOPeticion;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionPublicacion.DTORespuesta.PublicacionDTORespuesta;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionPublicacion.DTORespuesta.TipoDTORespuesta;

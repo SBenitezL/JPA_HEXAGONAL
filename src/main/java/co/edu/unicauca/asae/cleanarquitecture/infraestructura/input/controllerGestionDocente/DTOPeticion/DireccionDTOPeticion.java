@@ -8,7 +8,6 @@ import lombok.Data;
 public class DireccionDTOPeticion {
 
     private int idPersona;
-    private DocenteDTOPeticion objDocente;
     private String direccionResidencia;
     private String ciudad;
     private String pais;

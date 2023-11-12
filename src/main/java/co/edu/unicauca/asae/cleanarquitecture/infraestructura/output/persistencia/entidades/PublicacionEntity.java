@@ -22,7 +22,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class PublicacionEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idPublicacion")
     private int idPublicacion;
 
@@ -36,7 +35,7 @@ public class PublicacionEntity {
     @Column(name = "area", nullable = false)
     private String area;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="Docentes_Publicaciones",
         joinColumns = @JoinColumn(name = "idPublicacion"),
         inverseJoinColumns = @JoinColumn(name = "idPersona"))
