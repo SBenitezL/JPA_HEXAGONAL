@@ -2,11 +2,8 @@ package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerG
 
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,6 +59,7 @@ public class PublicacionRestController {
             HttpStatus.OK);
         return objRespuesta;*/
         List<Publicacion> p = this.gestionarPublicacionCU.listarPropuestasEager();
-        return this.mapperPublicacion.mappearDePublicacionesARespuesta(p);
+
+        return this.mapperPeticionAPublicacion.mapperPublicacionesARespuesta(p);
     }
 }
