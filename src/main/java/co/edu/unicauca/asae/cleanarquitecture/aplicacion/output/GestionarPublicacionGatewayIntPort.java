@@ -10,4 +10,5 @@ public interface GestionarPublicacionGatewayIntPort {
     public Publicacion consultarPublicacionPorTitulo(String titulo);
     public int existePublicacionPorTitulo(String titulo);
     public List<Publicacion> consultarPublicaciones();
+    public List<Publicacion> consultarPublicacionsPorPatron(String patron);
 }

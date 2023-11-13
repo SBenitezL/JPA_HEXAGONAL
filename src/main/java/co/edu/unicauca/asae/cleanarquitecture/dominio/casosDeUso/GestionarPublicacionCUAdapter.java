@@ -52,5 +52,10 @@ public class GestionarPublicacionCUAdapter implements GestionarPublicacionCUIntP
         }
         return null;
     }
+
+    @Override
+    public List<Publicacion> consultarPublicacionPorPatron(String patron) {
+        return this.gatewayPublicacion.consultarPublicacionsPorPatron(patron);
+    }
     
 }

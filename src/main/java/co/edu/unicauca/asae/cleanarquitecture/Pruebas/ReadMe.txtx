@@ -1,0 +1,10 @@
+en la ruta:
+
+infraestructura/output/persistencia/mappers/mapper.java
+
+se debe descomentar el mapeo correspondiente a cada servicio rest a probar,
+deje indicado que lineas descomentar para cada servicio, y para consultar por patron
+el mapeo de eager o lazy les sirve
+
+No se olviden que la gestion de tipos no se hacen en el proyecto,creen los tipos antes
+en la base de datos manualmente

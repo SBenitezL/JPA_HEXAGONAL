@@ -1,0 +1,160 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "ASAEGrupos",
+    "dateExported": "2023-11-13T16:23:11.507Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "414cb75b-72f1-48a3-b9e9-93a60debb416",
+            "colId": "d4959e2d-380e-45c4-8812-9519aa3d966f",
+            "containerId": "",
+            "name": "Crear Docente",
+            "url": "localhost:5000/apiDocente/docentes",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-11-10T23:09:32.792Z",
+            "modified": "2023-11-12T17:41:42.828Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"idPersona\":4,\n  \"tipoIdentificacion\":\"cedula\",\n  \"numeroIdentificacion\":\"1005\",\n  \"nombres\":\"Robert\",\n  \"apellidos\":\"Plank\",\n  \"correo\":\"robert@unicauca.edu.co\",\n  \"vinculacion\":\"cualquiera\",\n  \"departamento\":\"Musica\",\n  \"objDireccion\":{\n    \"idPersona\":3,\n    \"direccionResidencia\":\"Avenida 5\",\n    \"ciudad\":\"Londres\",\n    \"pais\":\"Inglaterra\"\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1759382c-ce68-48d7-af6e-115cc0a4a1dd",
+            "colId": "d4959e2d-380e-45c4-8812-9519aa3d966f",
+            "containerId": "",
+            "name": "Consultar Docente por correo",
+            "url": "localhost:5000/apiDocente/docentes?correo=robert@unicauca.edu.co",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-11-11T04:24:25.802Z",
+            "modified": "2023-11-12T17:41:57.303Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "correo",
+                    "value": "robert@unicauca.edu.co",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "e20194c9-4a07-453b-b4ec-bb12ef032f34",
+            "colId": "d4959e2d-380e-45c4-8812-9519aa3d966f",
+            "containerId": "",
+            "name": "Crear Publicacion",
+            "url": "localhost:5000/apiPublicacion/publicaciones",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-11-11T14:36:42.686Z",
+            "modified": "2023-11-12T17:46:34.174Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"idPublicacion\":1,\n  \"objTipo\":{\n    \"idTipo\":1,\n    \"nombre\":\"Pop\"\n  },\n  \"titulo\":\"Thriller\",\n  \"area\":\"Jackson's five\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "23be65ba-010b-460f-9ace-5d429bc98908",
+            "colId": "d4959e2d-380e-45c4-8812-9519aa3d966f",
+            "containerId": "",
+            "name": "Asignar Publicacion a Docente",
+            "url": "localhost:5000/apiPublicacion/publicaciones?correo=freddie@unicauca.edu.co&titulo=Another one bites the Dust",
+            "method": "PATCH",
+            "sortNum": 50000,
+            "created": "2023-11-11T17:12:41.306Z",
+            "modified": "2023-11-13T16:00:37.097Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "correo",
+                    "value": "freddie@unicauca.edu.co",
+                    "isPath": false
+                },
+                {
+                    "name": "titulo",
+                    "value": "Another one bites the Dust",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "42b0df4f-2b2a-415c-8766-b77fab832cfe",
+            "colId": "d4959e2d-380e-45c4-8812-9519aa3d966f",
+            "containerId": "",
+            "name": "Listar publicaciones LAZY",
+            "url": "localhost:5000/apiPublicacion/publicacionesLazy",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2023-11-11T18:51:50.894Z",
+            "modified": "2023-11-12T16:59:52.305Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "6939535a-54ef-413e-9e20-1b481b73523f",
+            "colId": "d4959e2d-380e-45c4-8812-9519aa3d966f",
+            "containerId": "",
+            "name": "Lista publicaciones EAGER",
+            "url": "localhost:5000/apiPublicacion/publicacionesEager",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-11-12T17:00:18.606Z",
+            "modified": "2023-11-12T17:00:28.327Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "de4d1061-760e-4f92-9dd2-7d80c8e4d7cc",
+            "colId": "d4959e2d-380e-45c4-8812-9519aa3d966f",
+            "containerId": "",
+            "name": "Consultar publicacion por titulo",
+            "url": "localhost:5000/apiPublicacion/publicaciones?titulo=Enter sandman",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2023-11-12T17:25:38.814Z",
+            "modified": "2023-11-13T16:06:11.362Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "titulo",
+                    "value": "Enter sandman",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "60a3da27-d2f8-472d-99c9-5eca8513a284",
+            "colId": "d4959e2d-380e-45c4-8812-9519aa3d966f",
+            "containerId": "",
+            "name": "Listar publicacion por patron",
+            "url": "localhost:5000/apiPublicacion/publicacionesPatron?patron=it",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-11-13T16:20:36.649Z",
+            "modified": "2023-11-13T16:22:26.974Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "patron",
+                    "value": "it",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        }
+    ]
+}

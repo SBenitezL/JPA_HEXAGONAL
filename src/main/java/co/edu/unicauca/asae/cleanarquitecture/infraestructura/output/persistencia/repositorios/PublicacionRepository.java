@@ -3,7 +3,7 @@ package co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistenc
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-
+import java.util.List;
 import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.persistencia.entidades.PublicacionEntity;
 
 public interface PublicacionRepository  extends CrudRepository<PublicacionEntity,Integer>{
@@ -13,5 +13,5 @@ public interface PublicacionRepository  extends CrudRepository<PublicacionEntity
 
     PublicacionEntity findByTitulo(String titulo);
 
-    PublicacionEntity findByTituloIgnoreCaseOrderByTitulo(String titulo);
+    List<PublicacionEntity> findByTituloIgnoreCaseContainingOrderByIdPublicacion(String patron);
 }

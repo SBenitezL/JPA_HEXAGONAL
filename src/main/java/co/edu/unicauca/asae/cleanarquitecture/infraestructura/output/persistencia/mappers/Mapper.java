@@ -26,10 +26,17 @@ public class Mapper {
         /*TypeMap<DireccionEntity,Direccion> mapaDireccion = mapper.emptyTypeMap(DireccionEntity.class, Direccion.class);
         mapaDireccion.addMappings(m -> m.skip(Direccion::setObjDocente)).implicitMappings();*/
 
-        /*Crear publicacion y consultarla por titulo */
-        TypeMap<TipoEntity,Tipo> mapaTipo = mapper.emptyTypeMap(TipoEntity.class, Tipo.class);
-        mapaTipo.addMappings(m -> m.skip(Tipo::setPublicaciones)).implicitMappings();
+        /*Crear publicacion*/
+        /*TypeMap<TipoEntity,Tipo> mapaTipo = mapper.emptyTypeMap(TipoEntity.class, Tipo.class);
+        mapaTipo.addMappings(m -> m.skip(Tipo::setPublicaciones)).implicitMappings();*/
         
+        /*Consultar publicaciones */
+        /*TypeMap<TipoEntity,Tipo> mapaTipo = mapper.emptyTypeMap(TipoEntity.class, Tipo.class);
+        mapaTipo.addMappings(m -> m.skip(Tipo::setPublicaciones)).implicitMappings();
+        TypeMap<DireccionEntity,Direccion> mapaDireccion = mapper.emptyTypeMap(DireccionEntity.class, Direccion.class);
+        mapaDireccion.addMappings(m -> m.skip(Direccion::setObjDocente)).implicitMappings();*/
+
+
         /*Asigna publicacion a docente */
         /*TypeMap<DireccionEntity,Direccion> mapaDireccion = mapper.emptyTypeMap(DireccionEntity.class, Direccion.class);
         TypeMap<TipoEntity,Tipo> mapaTipo = mapper.emptyTypeMap(TipoEntity.class, Tipo.class);
@@ -37,10 +44,10 @@ public class Mapper {
         mapaTipo.addMappings(m -> m.skip(Tipo::setPublicaciones)).implicitMappings();*/
 
         /*Para Eager */
-        /*TypeMap<TipoEntity,Tipo> mapaTipo = mapper.emptyTypeMap(TipoEntity.class, Tipo.class);
+        TypeMap<TipoEntity,Tipo> mapaTipo = mapper.emptyTypeMap(TipoEntity.class, Tipo.class);
         TypeMap<DireccionEntity,Direccion> mapaDireccion = mapper.emptyTypeMap(DireccionEntity.class, Direccion.class);
         mapaDireccion.addMappings(m -> m.skip(Direccion::setObjDocente)).implicitMappings();
-        mapaTipo.addMappings(m -> m.skip(Tipo::setPublicaciones)).implicitMappings();*/
+        mapaTipo.addMappings(m -> m.skip(Tipo::setPublicaciones)).implicitMappings();
         
         /*Para Lazy */
         /*TypeMap<PublicacionEntity, Publicacion> mapaPublicacion = mapper.emptyTypeMap(PublicacionEntity.class, Publicacion.class);

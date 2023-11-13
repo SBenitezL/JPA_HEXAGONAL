@@ -2,7 +2,6 @@ package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerG
 
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -73,6 +72,15 @@ public class PublicacionRestController {
     @GetMapping("/publicacionesLazy")
     public ResponseEntity<List<PublicacionDTORespuesta>> listarLazy(){
         List<Publicacion> publicaciones = this.gestionarPublicacionCU.listarPropuestas();
+        ResponseEntity<List<PublicacionDTORespuesta>> objRespuesta = new ResponseEntity<List<PublicacionDTORespuesta>>(
+            mapperPublicacion.mappearDePublicacionesARespuesta(publicaciones),
+            HttpStatus.OK);
+        return objRespuesta;
+    }
+
+    @GetMapping("/publicacionesPatron")
+    public ResponseEntity<List<PublicacionDTORespuesta>> listarPatron(@RequestParam String patron){
+        List<Publicacion> publicaciones = this.gestionarPublicacionCU.consultarPublicacionPorPatron(patron);
         ResponseEntity<List<PublicacionDTORespuesta>> objRespuesta = new ResponseEntity<List<PublicacionDTORespuesta>>(
             mapperPublicacion.mappearDePublicacionesARespuesta(publicaciones),
             HttpStatus.OK);

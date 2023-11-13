@@ -9,4 +9,5 @@ public interface GestionarPublicacionCUIntPort {
     public Publicacion asignarPublicacionDocente(String correo,String titulo);
     public List<Publicacion> listarPropuestas();
     public Publicacion consultarPublicacionPorTitulo(String titulo);
+    public List<Publicacion> consultarPublicacionPorPatron(String titulo);
 }

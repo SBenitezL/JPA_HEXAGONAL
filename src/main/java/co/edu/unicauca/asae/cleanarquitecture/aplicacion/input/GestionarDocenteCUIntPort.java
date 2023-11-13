@@ -4,5 +4,5 @@ import co.edu.unicauca.asae.cleanarquitecture.dominio.modelos.Docente;
 
 public interface GestionarDocenteCUIntPort {
     public Docente crearDocente(Docente docente);
-    public Docente consultarDocentePorCorreo(String correo);
+    public Docente consultarDocentePorCorreo(String patron);
 }

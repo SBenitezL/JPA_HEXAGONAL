@@ -38,7 +38,7 @@ public class GestionarPublicacionGatewayImplAdapter implements GestionarPublicac
 
     @Override
     public Publicacion consultarPublicacionPorTitulo(String titulo) {
-        PublicacionEntity publicacionConsultada = this.repositorioPublicacion.findByTituloIgnoreCaseOrderByTitulo(titulo);
+        PublicacionEntity publicacionConsultada = this.repositorioPublicacion.findByTitulo(titulo);
         Publicacion publicacionRespuesta = this.mapperPublicacion.map(publicacionConsultada, Publicacion.class);
         return publicacionRespuesta;
     }
@@ -51,6 +51,14 @@ public class GestionarPublicacionGatewayImplAdapter implements GestionarPublicac
     @Override
     public List<Publicacion> consultarPublicaciones() {
         Iterable<PublicacionEntity> iterablePublicacion = this.repositorioPublicacion.findAll();
+        List<Publicacion> listaObtenida = this.mapperPublicacion.map(iterablePublicacion, new TypeToken<List<Publicacion>>() {
+        }.getType());
+        return listaObtenida;
+    }
+
+    @Override
+    public List<Publicacion> consultarPublicacionsPorPatron(String patron) {
+        Iterable<PublicacionEntity> iterablePublicacion = this.repositorioPublicacion.findByTituloIgnoreCaseContainingOrderByIdPublicacion(patron);
         List<Publicacion> listaObtenida = this.mapperPublicacion.map(iterablePublicacion, new TypeToken<List<Publicacion>>() {
         }.getType());
         return listaObtenida;
