@@ -13,11 +13,10 @@ public class DocenteDTOPeticion extends PersonaDTOPeticion {
     @NotEmpty(message = "{docente.correo.empty}")
     @Email(message="{docente.correo.email}")
     private String correo;
-    //TODO:
     private String vinculacion;
     @NotEmpty(message = "{docente.departamento.empty}")
     private String departamento;
-    @NotEmpty(message = "{docente.direccion.empty}")
+    @NotNull(message = "{docente.direccion.empty}")
     private DireccionDTOPeticion objDireccion;
 
     public DocenteDTOPeticion(int idPersona,String tipoIdentificacion,String numeroIdentificacion,

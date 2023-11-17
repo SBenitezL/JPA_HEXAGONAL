@@ -7,6 +7,8 @@ import co.edu.unicauca.asae.cleanarquitecture.aplicacion.output.GestionarDocente
 import co.edu.unicauca.asae.cleanarquitecture.aplicacion.output.GestionarPublicacionGatewayIntPort;
 import co.edu.unicauca.asae.cleanarquitecture.dominio.modelos.Docente;
 import co.edu.unicauca.asae.cleanarquitecture.dominio.modelos.Publicacion;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.controladorExcepciones.excepcionesPropias.EntidadNoExisteException;
+import co.edu.unicauca.asae.cleanarquitecture.infraestructura.output.controladorExcepciones.excepcionesPropias.EntidadYaExisteException;
 
 public class GestionarPublicacionCUAdapter implements GestionarPublicacionCUIntPort {
 
@@ -25,24 +27,35 @@ public class GestionarPublicacionCUAdapter implements GestionarPublicacionCUIntP
         if(this.gatewayPublicacion.existePublicacionPorTitulo(publicacion.getTitulo()) == 0){
             return this.gatewayPublicacion.crearPublicacion(publicacion);
         }
-        return null;
+        EntidadYaExisteException objException = new EntidadYaExisteException("La publicación con titulo " + publicacion.getTitulo() + " ya existe");
+        throw objException;
     }
 
     @Override
     public Publicacion asignarPublicacionDocente(String correo, String titulo) {
-        if(this.gatewayDocente.existeDocenteConCorreo(correo)>0 && this.gatewayPublicacion.existePublicacionPorTitulo(titulo)>0){
-            Publicacion publicacion = this.gatewayPublicacion.consultarPublicacionPorTitulo(titulo);
-            Docente docente = this.gatewayDocente.consultarDocentePorCorreo(correo);
-            publicacion.getDocentes().add(docente);
-            System.out.println(publicacion.getDocentes().get(0).getIdPersona());
-            return this.gatewayPublicacion.crearPublicacion(publicacion);
+        if(this.gatewayDocente.existeDocenteConCorreo(correo)>0 ){
+            if(this.gatewayPublicacion.existePublicacionPorTitulo(titulo)>0){
+                Publicacion publicacion = this.gatewayPublicacion.consultarPublicacionPorTitulo(titulo);
+                Docente docente = this.gatewayDocente.consultarDocentePorCorreo(correo);
+                publicacion.getDocentes().add(docente);
+                System.out.println(publicacion.getDocentes().get(0).getIdPersona());
+                return this.gatewayPublicacion.crearPublicacion(publicacion);
+            }else{
+                EntidadNoExisteException objExcPublicacion = new EntidadNoExisteException("La publicacion con titulo " + titulo + " no esta registrada");
+                throw objExcPublicacion;
+            }
+        }else{
+            EntidadNoExisteException objExcDocente = new EntidadNoExisteException("El docente con correo " + correo + " no esta registrado");
+            throw objExcDocente;
         }
-        return null;
     }
 
     @Override
     public List<Publicacion> listarPropuestas() {
-        return this.gatewayPublicacion.consultarPublicaciones();
+        List<Publicacion> publicaciones = this.gatewayPublicacion.consultarPublicaciones();
+        if(publicaciones.size() > 0) return publicaciones;
+        EntidadNoExisteException objExcDocente = new EntidadNoExisteException("No hay publicaciones registradas.");
+            throw objExcDocente;
     }
 
     @Override
@@ -50,12 +63,16 @@ public class GestionarPublicacionCUAdapter implements GestionarPublicacionCUIntP
         if(this.gatewayPublicacion.existePublicacionPorTitulo(titulo) != 0){
             return this.gatewayPublicacion.consultarPublicacionPorTitulo(titulo);
         }
-        return null;
+        EntidadNoExisteException objExcDocente = new EntidadNoExisteException("La publicación con título " + titulo + " no esta registrada");
+            throw objExcDocente;
     }
 
     @Override
     public List<Publicacion> consultarPublicacionPorPatron(String patron) {
-        return this.gatewayPublicacion.consultarPublicacionsPorPatron(patron);
+        List<Publicacion> publicaciones = this.gatewayPublicacion.consultarPublicacionsPorPatron(patron);
+        if(publicaciones.size() > 0) return publicaciones;
+        EntidadNoExisteException objExcDocente = new EntidadNoExisteException("No hay publicaciones registradas con el patron "+ patron +".");
+            throw objExcDocente;
     }
     
 }

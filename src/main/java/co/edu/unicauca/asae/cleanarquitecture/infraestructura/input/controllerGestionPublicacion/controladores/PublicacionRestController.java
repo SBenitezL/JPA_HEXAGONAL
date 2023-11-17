@@ -2,6 +2,9 @@ package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerG
 
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +33,7 @@ public class PublicacionRestController {
     private final PublicacionMapperPeticionAObjInt mapperPeticionAPublicacion;
 
     @PostMapping("/publicaciones")
-    public ResponseEntity<PublicacionDTORespuesta> crear(@RequestBody PublicacionDTOPeticion publicacionPeticion){
+    public ResponseEntity<PublicacionDTORespuesta> crear(@Valid @RequestBody PublicacionDTOPeticion publicacionPeticion){
         Publicacion publicacionCrear = this.mapperPeticionAPublicacion.mappearPeticionAPublicacionCrear(publicacionPeticion);
         Publicacion publicacionCreada = this.gestionarPublicacionCU.crearPublicacion(publicacionCrear);
         ResponseEntity<PublicacionDTORespuesta> publicacionRespuesta = new ResponseEntity<PublicacionDTORespuesta>(
@@ -41,7 +44,7 @@ public class PublicacionRestController {
     }
 
     @GetMapping("/publicaciones")
-    public ResponseEntity<PublicacionDTORespuesta> consultarPorTitulo(@RequestParam String titulo){
+    public ResponseEntity<PublicacionDTORespuesta> consultarPorTitulo(@NotEmpty(message = "{publicacion.titulo.empty}") @RequestParam String titulo){
         Publicacion publicacionConsultada = this.gestionarPublicacionCU.consultarPublicacionPorTitulo(titulo);
         ResponseEntity<PublicacionDTORespuesta> publicacionRespuesta = new ResponseEntity<PublicacionDTORespuesta>(
             mapperPublicacion.mappearDePublicacionARespuesta(publicacionConsultada),

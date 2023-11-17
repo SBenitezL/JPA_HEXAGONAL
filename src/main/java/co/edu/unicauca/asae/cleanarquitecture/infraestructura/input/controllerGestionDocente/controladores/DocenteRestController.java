@@ -1,5 +1,8 @@
 package co.edu.unicauca.asae.cleanarquitecture.infraestructura.input.controllerGestionDocente.controladores;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +29,7 @@ public class DocenteRestController {
     private final DocenteMapperPeticionAObjInt mapperPeticionDocente;
 
     @PostMapping("/docentes")
-    public ResponseEntity<DocenteDTORespuesta> create(@RequestBody DocenteDTOPeticion docentePeticion){
+    public ResponseEntity<DocenteDTORespuesta> create(@Valid @RequestBody DocenteDTOPeticion docentePeticion){
         Docente docenteCrear = mapperPeticionDocente.mappearPeticionADocente(docentePeticion);
         Docente docenteCreado = this.gestionarDocenteCU.crearDocente(docenteCrear);
         ResponseEntity<DocenteDTORespuesta> docenteRespuesta = new ResponseEntity<DocenteDTORespuesta>(
@@ -36,7 +39,7 @@ public class DocenteRestController {
     }
 
     @GetMapping("/docentes")
-    public ResponseEntity<DocenteDTORespuesta> findByCorreo(@RequestParam String correo){
+    public ResponseEntity<DocenteDTORespuesta> findByCorreo(@NotEmpty(message = "{docente.correo.empty}") @RequestParam String correo){
         Docente docenteConCorreo = this.gestionarDocenteCU.consultarDocentePorCorreo(correo);
         ResponseEntity<DocenteDTORespuesta> docenteRespuesta = new ResponseEntity<DocenteDTORespuesta>(
             mapperDocente.mappearDeDocenteARespuesta(docenteConCorreo),

@@ -44,17 +44,17 @@ public class Mapper {
         mapaTipo.addMappings(m -> m.skip(Tipo::setPublicaciones)).implicitMappings();*/
 
         /*Para Eager */
-        TypeMap<TipoEntity,Tipo> mapaTipo = mapper.emptyTypeMap(TipoEntity.class, Tipo.class);
-        TypeMap<DireccionEntity,Direccion> mapaDireccion = mapper.emptyTypeMap(DireccionEntity.class, Direccion.class);
-        mapaDireccion.addMappings(m -> m.skip(Direccion::setObjDocente)).implicitMappings();
-        mapaTipo.addMappings(m -> m.skip(Tipo::setPublicaciones)).implicitMappings();
+        // TypeMap<TipoEntity,Tipo> mapaTipo = mapper.emptyTypeMap(TipoEntity.class, Tipo.class);
+        // TypeMap<DireccionEntity,Direccion> mapaDireccion = mapper.emptyTypeMap(DireccionEntity.class, Direccion.class);
+        // mapaDireccion.addMappings(m -> m.skip(Direccion::setObjDocente)).implicitMappings();
+        // mapaTipo.addMappings(m -> m.skip(Tipo::setPublicaciones)).implicitMappings();
         
         /*Para Lazy */
-        /*TypeMap<PublicacionEntity, Publicacion> mapaPublicacion = mapper.emptyTypeMap(PublicacionEntity.class, Publicacion.class);
+        TypeMap<PublicacionEntity, Publicacion> mapaPublicacion = mapper.emptyTypeMap(PublicacionEntity.class, Publicacion.class);
         TypeMap<DocenteEntity,Docente> mapaDocente = mapper.emptyTypeMap(DocenteEntity.class, Docente.class);
         mapaDocente.addMappings(m -> m.skip(Docente::setObjDireccion)).implicitMappings();
-        mapaPublicacion.addMappings(m -> m.skip(Publicacion::setObjTipo)).implicitMappings();*/
-        
+        mapaPublicacion.addMappings(m -> m.skip(Publicacion::setObjTipo)).implicitMappings();
+        //
         /*Para el patron de busqueda solicitado */
 
 
